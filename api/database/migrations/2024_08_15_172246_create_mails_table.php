@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pick_ups', function (Blueprint $table) {
+        Schema::create('mails', function (Blueprint $table) {
             $table->id();
-            $table->string('PickUpCode');
-            $table->string('Duration');
-            $table->string('Item');
-            $table->string('Status');
-            $table->bigInteger('stu_id')->unsigned();
-            $table->foreign('stu_id')->references('id')->on('users');
+            $table->string('description');
+            $table->time('time');
+            $table->bigInteger('notificationId')->unsigned();
+            $table->foreign('notificationId')->references('id')->on('notifications');
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pick_ups');
+        Schema::dropIfExists('mails');
     }
 };

@@ -6,18 +6,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Student\Student;
 
-class PickUp extends Model
+class Mails extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'PickUpCode',
-        'Duration',
-        'Item',
-        'Status',
-    ];
-    public function student(){
-        return $this->belongsTo(Student::class);
-    }
 
-    
+    protected $fillable = [
+        'description',
+        'time',
+        'notificationId'
+    ];
+
+    public function notification()
+    {
+        return $this->belongsTo(Notification::class, 'notificationId');
+    }
 }

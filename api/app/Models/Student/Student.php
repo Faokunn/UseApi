@@ -6,18 +6,15 @@ namespace App\Models\Student;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use app\Models\Student\Books;
-use app\Models\Student\lowerUniform;
-use app\Models\Student\upperUniform;
-use app\Models\Student\Notification;
-use app\Models\Student\PickUp;
-use app\Models\Student\rso;
-use app\Models\Student\Reservation;
-use app\Models\Student\Profile;
+use App\Models\Student\Profile;
+use App\Models\Student\Notification;
+use App\Models\Student\StudentBag;
+use Laravel\Sanctum\HasApiTokens;
+
 
 class Student extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasApiTokens,HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -29,28 +26,14 @@ class Student extends Authenticatable
         'password',
     ];
     public function profile(){
-        return $this->hasOne(Profile::class);
+        return $this->hasOne(Profile::class, 'stu_id', 'studentId');
     }
-    public function upperUniform(){
-        return $this->hasOne(upperUniform::class);
+    public function studentBag(){
+        return $this->hasOne(StudentBag::class, 'stu_id', 'studentId');
     }
-    public function lowerUnifrom(){
-        return $this->hasOne(lowerUniform::class);
-    }
-    public function rso(){
-        return $this->hasOne(rso::class);
-    }
-    public function book(){
-        return $this->hasMany(Books::class);
-    }
-    public function notiication(){
-        return $this->hasMany(Notification::class);
-    }
-    public function reservation(){
-        return $this->hasMany(Reservation::class);
-    }
-    public function pickup(){
-        return $this->hasMany(pickup::class);
+
+    public function notification(){
+        return $this->hasOne(Notification::class, 'stu_id', 'studentId');
     }
 
     /**

@@ -4,18 +4,19 @@ namespace App\Models\Student;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Student\Student;
+use App\Models\Student\StudentBag;
 
 class lowerUniform extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'LowerSize',
-        'HasUniform',
-        'Status',
+        'lower_size',
+        'status',
+        'code',
+        'stubag_id'
     ];
-    public function student(){
-        return $this->belongsTo(Student::class);
+    public function studentBag(){
+        return $this->belongsTo(StudentBag::class);
     }
 
     

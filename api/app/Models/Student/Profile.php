@@ -11,14 +11,21 @@ class Profile extends Model
     use HasFactory;
 
     protected $fillable = [
+        'FirstName',
+        'LastName',
         'Course',
         'Department',
+        'hasUUniform',
+        'hasLUniform',
+        'hasRSO',
+        'hasBooks',
         'Year',
         'Status',
+        'stu_id'
     ];
-    public function student(){
-        return $this->belongsTo(Student::class);
-    }
 
-    
+    public function student()
+    {
+        return $this->belongsTo(Student::class, 'stu_id', 'studentId');
+    }
 }

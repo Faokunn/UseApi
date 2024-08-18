@@ -31,14 +31,20 @@ return [
     | users are actually retrieved out of your database or other storage
     | system used by the application. Typically, Eloquent is utilized.
     |
-    | Supported: "session"
+    | Supported: "session", "token"
     |
     */
 
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'students',
+        ],
+
+        'api' => [
+            'driver' => 'sanctum',
+            'provider' => 'students',
+            'hash' => false,
         ],
     ],
 
@@ -60,11 +66,12 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'students' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
+            'model' => App\Models\Student\Student::class,
         ],
 
+        // Uncomment this if you have a `users` table for authentication
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

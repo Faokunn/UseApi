@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('upper_uniforms', function (Blueprint $table) {
             $table->id();
             $table->string('UpperSize');
-            $table->string('HasUniform');
             $table->string('Status');
-            $table->bigInteger('stu_id')->unsigned();
-            $table->foreign('stu_id')->references('id')->on('users');
+            $table->string('code');
+            $table->unsignedBigInteger('stubag_id');
+            $table->foreign('stubag_id')->references('id')->on('student_bags');
             $table->timestamps();
         });
     }

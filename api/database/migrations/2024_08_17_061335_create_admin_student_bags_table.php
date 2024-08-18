@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('books', function (Blueprint $table) {
+        Schema::create('admin_student_bags', function (Blueprint $table) {
             $table->id();
-            $table->string('BookName');
-            $table->string('hasBook');
-            $table->bigInteger('stu_id')->unsigned();
-            $table->foreign('stu_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
@@ -26,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('books');
+        Schema::dropIfExists('admin_student_bags');
     }
 };

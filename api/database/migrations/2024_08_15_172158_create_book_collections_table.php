@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -11,14 +12,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('students', function (Blueprint $table) {
+        Schema::create('book_collections', function (Blueprint $table) {
             $table->id();
-            $table->string('studentId')->unique();
-            $table->string('password');
-            $table->rememberToken();
+            $table->bigInteger('stubag_id')->unsigned();
+            $table->foreign('stubag_id')->references('id')->on('student_bags');
             $table->timestamps();
         });
-
     }
 
     /**
@@ -26,8 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
-        Schema::dropIfExists('password_reset_tokens');
-        Schema::dropIfExists('sessions');
+        Schema::dropIfExists('books');
     }
 };

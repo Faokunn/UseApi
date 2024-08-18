@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -11,16 +12,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reservations', function (Blueprint $table) {
+        Schema::create('books', function (Blueprint $table) {
             $table->id();
-            $table->string('Item');
-            $table->string('UpperSize');
-            $table->string('LowerSize');
             $table->string('BookName');
             $table->string('SubjectCode');
             $table->string('SubjectDesc');
-            $table->bigInteger('stu_id')->unsigned();
-            $table->foreign('stu_id')->references('id')->on('users');
+            $table->string('hasBook');
+            $table->string('code');
+            $table->bigInteger('bookCollection_id')->unsigned();
+            $table->foreign('bookCollection_id')->references('id')->on('book_collections');
             $table->timestamps();
         });
     }
@@ -30,6 +30,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reservations');
+        Schema::dropIfExists('book_collections');
     }
 };
+
+

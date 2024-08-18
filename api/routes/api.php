@@ -27,9 +27,7 @@ Route::apiResource('books', BooksController::class);
 Route::apiResource('lower-uniforms', LowerUniformController::class);
 Route::apiResource('upper-uniforms', UpperUniformController::class);
 Route::apiResource('notifications', NotificationController::class);
-Route::apiResource('pick-ups', PickUpController::class);
 Route::apiResource('profiles', ProfileController::class);
-Route::apiResource('reservations', ReservationController::class);
 Route::apiResource('rsos', RsoController::class);
 
 //Item
